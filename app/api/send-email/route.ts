@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { StatusCodes } from 'http-status-codes';
 
-export async function POST(req:NextRequest) {
+export async function POST(req: NextRequest) {
     let body;
 
     try {
         body = await req.json();
     } catch (error) {
         return NextResponse.json(
-            { success: false, message: 'Request body is empty or invalid' },
+            { success: false, message: 'Invalid request body' },
             { status: StatusCodes.BAD_REQUEST }
         );
     }
@@ -22,18 +22,55 @@ export async function POST(req:NextRequest) {
         );
     }
 
+    console.log(process.env.NEXT_PUBLIC_MAIL_API_KEY);
+    console.log(process.env.NEXT_PUBLIC_EMAIL); 
+    
     try {
         const response = await fetch("https://api.mailersend.com/v1/email", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.MAILERSEND_API_KEY}`
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_MAIL_API_KEY}`
             },
             body: JSON.stringify({
-                from: { email: process.env.EMAIL_FROM }, // ✅ MailerSend verified email
-                to: [{ email: email }], // ✅ Recipient email
+                from: {email: email},
+                to: [{ email: process.env.NEXT_PUBLIC_EMAIL }],
                 subject: subject,
-                text: text
+                text: text,
+                html: `
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Email Template</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; }
+                            .container { max-width: 600px; margin: 20px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+                            .header { background: linear-gradient(to right, #8b5cf6, #9333ea); padding: 20px; text-align: center; color: white; font-size: 24px; font-weight: bold; }
+                            .content { padding: 20px; text-align: center; }
+                            .content h1 { color: #333; font-size: 22px; }
+                            .content p { color: #666; font-size: 14px; }
+                            .button { display: inline-block; background: #9333ea; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold; margin-top: 10px; }
+                            .footer { background: #333; color: white; text-align: center; padding: 20px; font-size: 12px; }
+                            .footer a { color: #8b5cf6; text-decoration: none; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="container">
+                            <div class="header">Notification</div>
+                            <div class="content">
+                                <h1>${subject}</h1>
+                                <p>${text}</p>
+                            </div>
+                            <div class="footer">
+                                <p>© 2025 ACME Inc. All rights reserved.</p>
+                                <p><a href="#">Unsubscribe</a></p>
+                            </div>
+                        </div>
+                    </body>
+                    </html>
+                `
             })
         });
 
@@ -47,7 +84,7 @@ export async function POST(req:NextRequest) {
             { success: true, message: "Email sent successfully!", data },
             { status: StatusCodes.OK }
         );
-    } catch (error:any) {
+    } catch (error: any) {
         console.error("MailerSend Error:", error);
 
         return NextResponse.json(
