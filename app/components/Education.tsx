@@ -42,7 +42,7 @@ export default function Education() {
                   <GraduationCap className="w-6 h-6 mr-2" />
                   {edu.degree}
                 </h3>
-                <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">{edu.institution}</p>
+                <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-4">{edu.institution}</p>
                 <p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center">
                   <Calendar className="w-4 h-4 mr-2" />
                   {edu.period}
