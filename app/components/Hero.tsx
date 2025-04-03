@@ -1,11 +1,14 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { GitlabIcon as GitHub, Linkedin, Mail, ArrowDown } from "lucide-react"
-import { motion } from "framer-motion"
+import Image from "next/image";
+import { GitlabIcon as GitHub, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { motion } from "framer-motion";
 
 const CodePattern = () => (
-  <svg className="absolute inset-0 w-full h-full opacity-5" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    className="absolute inset-0 w-full h-full opacity-5"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <pattern
       id="pattern-circles"
       x="0"
@@ -15,11 +18,24 @@ const CodePattern = () => (
       patternUnits="userSpaceOnUse"
       patternContentUnits="userSpaceOnUse"
     >
-      <circle id="pattern-circle" cx="10" cy="10" r="1.6257413380501518" fill="#000"></circle>
+      <circle
+        id="pattern-circle"
+        cx="10"
+        cy="10"
+        r="1.6257413380501518"
+        fill="#000"
+      ></circle>
     </pattern>
-    <rect id="rect" x="0" y="0" width="100%" height="100%" fill="url(#pattern-circles)"></rect>
+    <rect
+      id="rect"
+      x="0"
+      y="0"
+      width="100%"
+      height="100%"
+      fill="url(#pattern-circles)"
+    ></rect>
   </svg>
-)
+);
 
 export default function Hero() {
   return (
@@ -52,26 +68,31 @@ export default function Hero() {
               MERN Stack Developer
             </h2>
             <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0">
-              Crafting exceptional digital experiences with modern web technologies. Specialized in building scalable
-              full-stack applications using MongoDB, Express.js, React, and Node.js.
+              Crafting exceptional digital experiences with modern web
+              technologies. Specialized in building scalable full-stack
+              applications using MongoDB, Express.js, React, and Node.js.
             </p>
             <div className="flex justify-center lg:justify-start space-x-4 mb-8">
               <a
-                href="#"
+                href="https://github.com/Shezadaboy"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="GitHub Profile"
               >
                 <GitHub className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
               <a
-                href="#"
+                target="_blank"
+                href="https://www.linkedin.com/in/subhan-muneer-419a7b291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-6 h-6 text-gray-700 dark:text-gray-300" />
               </a>
               <a
-                href="mailto:musmanzafar53@gmail.com"
+                target="_blank"
+                href="mailto:shezadaboy938@gmail.com"
                 className="p-3 rounded-full bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800 transition-colors duration-300 shadow-lg hover:shadow-xl"
                 aria-label="Email Contact"
               >
@@ -79,7 +100,11 @@ export default function Hero() {
               </a>
             </div>
             <motion.button
-              onClick={() => document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() =>
+                document
+                  .getElementById("about")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
               className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -96,14 +121,17 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative w-72 h-72 md:w-96 md:h-96 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-6 opacity-50"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-6 opacity-50"></div>
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              {/* Background Gradients */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 dark:from-blue-600 dark:to-purple-600 rounded-3xl transform rotate-12 opacity-50"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 dark:from-purple-600 dark:to-blue-600 rounded-3xl transform -rotate-12 opacity-50"></div>
+
+              {/* Image Wrapper */}
+              <div className="relative w-full h-full rounded-2xl shadow-2xl overflow-hidden">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0812.jpg-jQSxWaycmtpBR7IUnsPV8C8L3vlrQ2.jpeg"
-                  alt="Usman Zafar"
-                  fill
-                  className="object-cover"
+                  src="/1.JPG" // Ensure the correct path from "public" folder
+                  alt="Subhan Muneer"
+                  layout="fill" // Makes the image cover the entire div
+                  objectFit="cover" // Ensures it fills the box without distortion
                   priority
                 />
               </div>
@@ -122,6 +150,5 @@ export default function Hero() {
         <div className="w-1 h-12 bg-gradient-to-b from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 rounded-full animate-pulse"></div>
       </motion.div>
     </section>
-  )
+  );
 }
-

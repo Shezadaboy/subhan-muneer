@@ -9,7 +9,7 @@ export default function Education() {
   const education = [
     {
       degree: "FSC Pre-Engineering",
-      institution: "Punjab Group Of Collage - Multan",
+      institution: "Punjab Group Of Collage",
       period: "2018 – 2020",
       achievements: [
         "Complete Intermediate with honors",

@@ -22,7 +22,7 @@ const skills = [
   {
     icon: Server,
     name: "Backend Development",
-    tech: "Node.js, Express, Fastify",
+    tech: "Node.js, Express",
     description: "Creating robust server-side applications with focus on scalability and clean architecture.",
     color: "text-green-500",
   },
