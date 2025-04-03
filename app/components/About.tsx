@@ -56,7 +56,7 @@ export default function About() {
             {skills.map((skill, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
                 {skill.icon}
-                <h3 className="text-xl font-semibold mt-4 mb-2 dark:text-white">{skill.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold mt-4 mb-2 dark:text-white">{skill.title}</h3>
                 <p className="text-gray-600 dark:text-gray-300">{skill.description}</p>
               </div>
             ))}

@@ -38,7 +38,7 @@ export default function Education() {
             >
               <div className="absolute top-0 left-0 w-32 h-32 bg-purple-200 dark:bg-purple-700 rounded-br-full z-0 opacity-50"></div>
               <div className="relative z-10">
-                <h3 className="text-2xl font-semibold mb-2 dark:text-white flex items-center">
+                <h3 className="text-xl md:text-2xl font-semibold mb-2 dark:text-white flex items-center">
                   <GraduationCap className="w-6 h-6 mr-2" />
                   {edu.degree}
                 </h3>
